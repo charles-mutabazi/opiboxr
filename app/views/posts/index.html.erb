@@ -1,1 +1,7 @@
-<h1>Hello Charles</h1>
+<h1>Demands</h1>
+
+<% @posts.each do |post| %>
+<h2><%= link_to post.title, post %></h2>
+<% end %>
+
+<p><%= link_to "New Demand", new_post_path %></p>

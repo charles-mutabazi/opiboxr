@@ -1,0 +1,12 @@
+<%= form_for @post do |f| %>
+	<div class="form-group">
+		<%= f.text_field :title, :placeholder => 'Post Title' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.text_area :description, size: "60x12", :placeholder => 'Enter your Post body here...' %>
+	</div>
+
+	<%= f.submit %>
+
+<% end %>
