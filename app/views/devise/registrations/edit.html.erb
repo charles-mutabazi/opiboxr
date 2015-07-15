@@ -4,8 +4,29 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div><%= f.radio_button :m1_stundent, true %> <%= f.label :m1_stundent, "M1 Student", :value => true %> </div>
+  <div><%= f.radio_button :m1_stundent, false %> <%= f.label :m1_stundent, "M2 Student", :value => false %> </div>
+
+  <div><%= f.radio_button :is_female, false %> <%= f.label :is_female, "Female", :value => true %> </div>
+  <div><%= f.radio_button :is_female, true %> <%= f.label :is_female, "Male", :value => false %> </div>
+
+  <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date, start_year: 1964 %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

@@ -1,0 +1,9 @@
+
+<p><%= @user.name %></p>
+<p><%= @user.email %></p>
+<p><%= @user.birth_date %></p>
+<p><%= @user.is_female ? "Male" : "Female" -%></p>
+<p><%= @user.m1_stundent ? "M1 Student" : "M2 Student" -%></p>
+
+<%= image_tag @user.avatar.url(:medium) %>
+<%= image_tag @user.avatar.url(:thumb) %>
