@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.5.1' #for users
 gem 'paperclip', '~> 4.3.0' #image upload
 gem 'cancan', '~> 1.6.10' # cancan authorization
+gem 'acts_as_votable', '~> 0.10.0' # voting system
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
