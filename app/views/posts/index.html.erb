@@ -1,43 +1,75 @@
-<h1>Demands</h1>
-
 <% if user_signed_in? %>
 <%= render 'form' %>
 <% end %>
 
 <% @posts.each do |post| %>
-<p><%= post.description %></p>
+<div class="post">
+  <div class="row">
 
-<p><%= pluralize(post.get_upvotes.size, "Like") %> |
-<%= pluralize(post.get_downvotes.size, "Dislike") %>
-</p>
-<p><%= link_to "Like", like_post_path(post), method: :get %> |
-  <%= link_to "Dislike", dislike_post_path(post), method: :get %> </p>
-<p>
-  <% if post.user == current_user %>
-  <%= link_to "Edit Post", edit_post_path(post) %> |
-  <%= link_to "Delete Demand", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
-</p>
+    <div class="col-xs-2">
+      <div class="user_image">
+        <%= image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive" %>
+        <div class="user_name" style="text-align: center">
+          <strong><%= link_to post.user.name, post.user %></strong>
+        </div>
+      </div>
+    </div>
 
-<div class="comment">
+    <div class="col-xs-10">
+      <div class="post_decription">
+          <%= simple_format(post.description) %>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-7">
+          <% if user_signed_in? %>
+          <span class="vote_buttons">
+            <%= link_to "Like", like_post_path(post), method: :get %> |
+            <%= link_to "Dislike", dislike_post_path(post), method: :get %>
+          </span>
+          <%end%> &nbsp;&nbsp;
+          <span class="vote_counts">
+            <%= pluralize(post.get_upvotes.size, "Like") %> |
+            <%= pluralize(post.get_downvotes.size, "Dislike") %>
+          </span>
+        </div>
+        <div class="pull-right">
+          <% if post.user == current_user %>
+          <%= link_to "Edit Post", edit_post_path(post) %> |
+          <%= link_to "Delete Demand", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
+    </div>
+
+    </div>
+  </div>
+
   <strong class="commet-count"><%= pluralize(post.comments.count, "Comment")%></strong>
-  <% post.comments.each do |comment| %>
-  <p class="username"><%= comment.user.name %></p>
-  <p class="content"><%= comment.content %></p>
+
+    <% post.comments.each do |comment| %>
+    <div class="comment row">
+      <div class="col-xs-1">
+        <%= image_tag post.user.avatar.url(:sm_thumb), class: "img-rounded" %>
+      </div>
+      <div class="col-xs-11">
+        <strong><%= link_to comment.user.name, comment.user %></strong>
+        <p class="content"><%= comment.content %></p>
+        <p class="time"><%= time_ago_in_words(comment.created_at) %> ago </p>
+      </div>
+    </div>
+    <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_for([post, post.comments.build]) do |f| %>
+      <div class="comment_textfield row">
+        <div class="col-xs-1">
+          <%= image_tag current_user.avatar.url(:sm_thumb), class: "img-rounded" %>
+        </div>
+        <div class="col-xs-11">
+          <%= f.text_field :content, :placeholder => "Comment on demand" %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>
-
-<% if user_signed_in? %>
-  <%= form_for([post, post.comments.build]) do |f| %>
-    <div class="comment">
-      <%= f.text_area :content, :placeholder => "Comment on demand" %>
-    </div>
-    <%= f.submit %>
-  <% end %>
 <% end %>
-
-<% end %>
-
-<p><%= if user_signed_in?
-   puts link_to "New Demand", new_post_path
- end%></p>

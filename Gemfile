@@ -12,6 +12,7 @@ gem 'devise', '~> 3.5.1' #for users
 gem 'paperclip', '~> 4.3.0' #image upload
 gem 'cancan', '~> 1.6.10' # cancan authorization
 gem 'acts_as_votable', '~> 0.10.0' # voting system
+gem 'bootstrap-sass', '~> 3.3.5.1' # Twitter bootstrap converted to sass
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'

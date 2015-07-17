@@ -1,0 +1,176 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+html, body{
+	/*font-family: "Helvetica Neue Thin", sans-serif;*/
+	font-weight: normal;
+	color: #0B1C1E;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	margin: 10px 0;
+}
+
+input[type="submit"], button {
+	display: inline-block;
+	margin-bottom: 0;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	cursor: pointer;
+	background: transparent;
+	border: 1px solid #0B1C1E;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 2px;
+}
+
+input[type="submit"]:hover, button:hover {
+	background: #0B1C1E;
+	color: #fff
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	display: block;
+	margin-bottom: 15px;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #0B1C1E;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+	outline: 0px;
+    -webkit-appearance: none;
+}
+
+textarea {
+	resize: none;
+	width: 100%;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	color: #0B1C1E;
+
+}
+
+.form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.alert {
+	margin-bottom: 10px;
+	border-radius: 2px;
+}
+
+.masterhead {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	font-size: 24px;
+	background: url('/assets/p_lab_team.png') no-repeat top center fixed;
+	// background-size: cover;
+	text-align: center;
+	margin-bottom: 10px;
+	width: 100%;
+
+	h1 {
+		color: #e9eefb;
+		text-shadow: 1px 1px 2px black, 0 0 0.5em white, 0 0 0.7em white;
+		small {
+			font-size: 20px;
+			font-weight: 200;
+			color: #e9eefb;
+		}
+	}
+}
+
+.main-navbar {
+	margin-bottom: 0;
+	background-color: #fff;
+	border-bottom: 0;
+	.icon-bar {
+		background: #0B1C1E;
+	}
+	.navbar-toggle:hover {
+		.icon-bar {
+			background: white;
+		}
+	}
+	a {
+		color: #0B1C1E;
+	}
+	li {
+		a:hover {
+			background: transparent;
+		}
+		.link_btn {
+			padding: 8px 0;
+		}
+	}
+}
+
+.actions {
+	border-top: 1px solid #e8e8e8;
+	padding-top: 10px;
+	margin: 10px 0;
+
+	input[type="submit"], button {
+		width: 100%;
+		font-weight: normal;
+	}
+
+}
+
+.f-topics {
+	border-left: 1px solid #eee;
+	padding-left: 20px;
+	.topics {
+		padding: 10px;
+		border-radius: 2px;
+		background: #f8f8f8;
+		margin-bottom: 20px;
+		-webkit-box-shadow: 0px 0.5px 5px 0.5px #d9d9d9;
+		-moz-box-shadow: 0px 0.5px 5px 0.5px #d9d9d9;
+		box-shadow: 0px 0.5px 5px 0.5px #d9d9d9;
+	}
+}
+
+.main-footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-top: 50px;
+	color: #767676;
+	text-align: center;
+	border-top: 1px solid #e5e5e5;
+}
+
+.parallax-window {
+    min-height: 400px;
+    background: transparent;
+}
