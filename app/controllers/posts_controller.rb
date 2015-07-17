@@ -3,9 +3,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @posts = Post.all.order('created_at DESC')
+    if user_signed_in?
+      new()
+    end
   end
 
   def show
+    # @comments = Comment.where(post_id: @post)
   end
 
   def new
@@ -14,26 +18,26 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to @post
-    else
-      render "new"
-    end
+    @post.save
+    redirect_to root_path
   end
 
   def edit
+    unless @post.user == current_user
+      redirect_to root_path, :alert => "Access Denied"
+    end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to root_path
     else
       render 'edit'
     end
   end
 
   def destroy
-    @post.destroy
+    @post.destroy if @post.user == current_user
     redirect_to root_path
   end
 
@@ -43,6 +47,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description)
+    params.require(:post).permit(:description)
   end
 end

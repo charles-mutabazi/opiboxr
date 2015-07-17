@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.5.1' #for users
 gem 'paperclip', '~> 4.3.0' #image upload
+gem 'cancan', '~> 1.6.10' # cancan authorization
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
