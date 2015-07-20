@@ -2,12 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .post{
-  border-bottom: 1px solid lightgray;
-  padding: 5px 0;
+  // border-bottom: 1px solid lightgray;
+  padding: 10px;
   margin: 10px 0;
+  background-color: #ffffff;
+  border-radius: 3px;
+
+  //for the shadow...
+  -moz-box-shadow: 0 0 3px #eee;
+  -webkit-box-shadow: 0 0 3px #eee;
+  box-shadow: 0 0 3px #eee;
 
   .comment {
-    background: #f4f4f4;
+    // background: #f4f4f4;
+    border: 1px solid lightgray;
     padding: 5px;
     margin: 10px 0;
     border-radius: 3px;
@@ -21,7 +29,15 @@
     }
   }
 
+  .user_image {
+    img{
+      border: 1px solid #5C3031;
+      padding: 3px;
+    }
+  }
+
   input[type="text"] {
     font-size: 12px;
+    margin-bottom: 0px;
   }
 }

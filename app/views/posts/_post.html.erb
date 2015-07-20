@@ -1,0 +1,91 @@
+<% @posts.each do |post| %>
+<div class="post">
+  <div class="row">
+
+    <div class="col-xs-2">
+      <div class="user_image">
+        <%= image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive" %>
+        <div class="user_name" style="text-align: center">
+          <strong><%= link_to post.user.name, post.user %></strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-10">
+      <div class="post_decription">
+          <%= simple_format(post.description) %>
+      </div>
+
+      <!-- Voting section  -->
+      <div class="row">
+        <div class="col-xs-7">
+          <span class="vote_counts">
+            <span class="label label-success"><%= pluralize(post.get_upvotes.size, "Up") %></span> |
+            <span class="label label-danger"><%= pluralize(post.get_downvotes.size, "Down") %></span>
+          </span>
+          &nbsp;&nbsp;
+          <% if user_signed_in? %>
+          <span class="vote_buttons">
+            <%= link_to like_post_path(post), method: :get do %>
+              <i class="glyphicon glyphicon-thumbs-up"></i> Up
+            <% end %>
+            &nbsp;
+            <%= link_to dislike_post_path(post), method: :get do %>
+              <i class="glyphicon glyphicon-thumbs-down"></i> Down
+            <% end %>
+          </span>
+          <%end%>
+        </div>
+        <!-- EOF Voting section -->
+
+        <!-- Editing section -->
+        <div class="col-xs-5">
+          <div class="pull-right ">
+            <% if post.user == current_user %>
+            <%= link_to edit_post_path(post) do %>
+    					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    				<% end %>
+            &nbsp;&nbsp;
+    				<%= link_to post_path(post), method: :delete, data: { confirm: 'Are you sure?'} do %>
+    					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    				<% end %>
+            <% end %>
+          </div>
+        </div>
+        <!-- EOF Editing section -->
+    </div>
+
+    </div>
+  </div>
+
+  <!-- Comment Section -->
+  <strong class="commet-count"><%= pluralize(post.comments.count, "Comment")%></strong>
+
+    <% post.comments.each do |comment| %>
+    <div class="comment row">
+      <div class="col-xs-1">
+        <%= image_tag comment.user.avatar.url(:sm_thumb), class: "img-rounded" %>
+      </div>
+      <div class="col-xs-11">
+        <strong><%= link_to comment.user.name, comment.user %></strong>
+        <p class="content"><%= comment.content %></p>
+        <p class="time"><%= time_ago_in_words(comment.created_at) %> ago </p>
+      </div>
+    </div>
+    <% end %>
+
+  <% if user_signed_in? %>
+    <%= form_for([post, post.comments.build]) do |f| %>
+      <div class="comment_textfield row">
+        <div class="col-xs-1">
+          <%= image_tag current_user.avatar.url(:sm_thumb), class: "img-rounded" %>
+        </div>
+        <div class="col-xs-11">
+          <%= f.text_field :content, :placeholder => "Comment on demand" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <!-- EOF Comment section -->
+</div>
+<% end %>

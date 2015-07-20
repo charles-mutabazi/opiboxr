@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @cover_page = true
     @user = User.find(params[:id])
 		@posts = @user.posts.order('created_at DESC')
   end

@@ -18,14 +18,18 @@
 
 html, body{
 	/*font-family: "Helvetica Neue Thin", sans-serif;*/
-	font-weight: normal;
-	color: #0B1C1E;
+	font-weight: 300;
+	color: #5C3031;
+	background-color: #fafafa;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	margin: 10px 0;
 }
+ .wrapper{
+	 padding: 10px 0;
+ }
 
 input[type="submit"], button {
 	display: inline-block;
@@ -35,7 +39,7 @@ input[type="submit"], button {
 	touch-action: manipulation;
 	cursor: pointer;
 	background: transparent;
-	border: 1px solid #0B1C1E;
+	border: 1px solid #5C3031;
 	white-space: nowrap;
 	padding: 6px 12px;
 	font-size: 14px;
@@ -44,7 +48,7 @@ input[type="submit"], button {
 }
 
 input[type="submit"]:hover, button:hover {
-	background: #0B1C1E;
+	background: #5C3031;
 	color: #fff
 }
 
@@ -56,7 +60,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 	padding: 6px 12px;
 	font-size: 14px;
 	line-height: 1.42857143;
-	color: #0B1C1E;
+	color: #5C3031;
 	background-color: #fff;
 	background-image: none;
 	border: 1px solid #ccc;
@@ -74,7 +78,7 @@ textarea {
 	padding: 6px 12px;
 	border: 1px solid #ccc;
 	border-radius: 2px;
-	color: #0B1C1E;
+	color: #5C3031;
 
 }
 
@@ -115,7 +119,7 @@ textarea {
 	background-color: #fff;
 	border-bottom: 0;
 	.icon-bar {
-		background: #0B1C1E;
+		background: #5C3031;
 	}
 	.navbar-toggle:hover {
 		.icon-bar {
@@ -123,7 +127,7 @@ textarea {
 		}
 	}
 	a {
-		color: #0B1C1E;
+		color: #5C3031;
 	}
 	li {
 		a:hover {
@@ -170,7 +174,13 @@ textarea {
 	border-top: 1px solid #e5e5e5;
 }
 
-.parallax-window {
-    min-height: 400px;
-    background: transparent;
+.cover_page {
+    min-height: 200px;
+		//Texture background
+		background-color: hsl(2, 57%, 40%);
+		background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+		repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+		repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
+		color: white;
+		margin: auto;
 }
