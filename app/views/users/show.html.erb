@@ -4,11 +4,19 @@
       <%= image_tag @user.avatar.url(:medium), class: "img-rounded img-responsive" %>
     </div>
     <div class="col-sm-7 col-xs-12">
-      <h1><%= @user.name %></h1>
-      <p><%= @user.email %></p>
-      <p><%= @user.birth_date.to_date.to_formatted_s(:long_ordinal) %></p>
-      <p><%= @user.is_female ? "Male" : "Female" %></p>
-      <p><%= @user.m1_stundent ? "M1 Student" : "M2 Student" %></p>
+      <div class="user_info_card">
+        <h1><%= @user.name %></h1>
+        <p> <strong><i class="glyphicon glyphicon-envelope"></i> E-Mail:</strong> <%= @user.email %></p>
+        <p><strong><i class="glyphicon glyphicon-calendar"></i> Birth Date:</strong> <%= @user.birth_date.to_date.to_formatted_s(:long_ordinal) if @user.birth_date %></p>
+        <p> <strong>Gender:</strong> <%= @user.is_female ? "Male" : "Female" %></p>
+        <p> <strong>Academic Year:</strong> <%= @user.m1_stundent ? "M1 Student" : "M2 Student" %></p>
+        <p>
+          <strong>Bio</strong> <br>
+          Maecenas sed diam eget risus varius blandit sit amet non magna.
+          Integer posuere erat a ante venenatis dapibus posuere velit aliquet.
+          Etiam porta sem malesuada magna mollis euismod.
+        </p>
+      </div>
     </div>
   </div>
 </div>

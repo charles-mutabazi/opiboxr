@@ -1,12 +1,14 @@
 <% @posts.each do |post| %>
 <div class="post">
-  <div class="row">
-
+  <div class="row ">
     <div class="col-xs-2">
       <div class="user_image">
         <%= image_tag post.user.avatar.url(:thumb), class: "img-circle img-responsive" %>
-        <div class="user_name" style="text-align: center">
+        <div class="user_name text-center">
           <strong><%= link_to post.user.name, post.user %></strong>
+        </div>
+        <div class="time_ago text-center">
+          <%= time_ago_in_words(post.created_at) %> ago
         </div>
       </div>
     </div>
@@ -57,7 +59,7 @@
 
     </div>
   </div>
-
+  <hr>
   <!-- Comment Section -->
   <strong class="commet-count"><%= pluralize(post.comments.count, "Comment")%></strong>
 
@@ -67,9 +69,13 @@
         <%= image_tag comment.user.avatar.url(:sm_thumb), class: "img-rounded" %>
       </div>
       <div class="col-xs-11">
-        <strong><%= link_to comment.user.name, comment.user %></strong>
+        <% if comment.user.name %>
+          <strong><%= link_to comment.user.name.partition(' ').first.titleize, comment.user %></strong>
+        <% else %>
+          <strong><%= link_to comment.user.email.partition('@').first.titleize, comment.user %></strong> <!-- Elegant Code -->
+        <% end %>
         <p class="content"><%= comment.content %></p>
-        <p class="time"><%= time_ago_in_words(comment.created_at) %> ago </p>
+        <p class="time_ago"><%= time_ago_in_words(comment.created_at) %> ago </p>
       </div>
     </div>
     <% end %>
