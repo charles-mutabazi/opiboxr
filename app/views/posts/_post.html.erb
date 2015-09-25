@@ -75,7 +75,11 @@
           <strong><%= link_to comment.user.email.partition('@').first.titleize, comment.user %></strong> <!-- Elegant Code -->
         <% end %>
         <p class="content"><%= comment.content %></p>
-        <p class="time_ago"><%= time_ago_in_words(comment.created_at) %> ago </p>
+        <p class="time_ago"><%= time_ago_in_words(comment.created_at) %> ago
+          <% if current_user == comment.user %>
+            | <%= link_to "Delete", [comment.post, comment], method: :delete , data: {confirm: 'Are you sure?'}%>
+          <% end %>
+        </p>
       </div>
     </div>
     <% end %>

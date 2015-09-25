@@ -7,9 +7,16 @@ class CommentsController < ApplicationController
     @comment.post_id = @post.id
 
     if @comment.save
-      redirect_to root_path
+      redirect_to request.referrer
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    redirect_to root_path
   end
 end
