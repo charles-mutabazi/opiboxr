@@ -13,8 +13,16 @@ gem 'paperclip', '~> 4.3.0' #image upload
 gem 'cancan', '~> 1.6.10' # cancan authorization
 gem 'acts_as_votable', '~> 0.10.0' # voting system
 gem 'bootstrap-sass', '~> 3.3.5.1' # Twitter bootstrap converted to sass
+
+gem 'aws-sdk-rails', '~> 1.0' #to work with amazon web services (aws)
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'mysql2', '~> 0.3.18'
 end
